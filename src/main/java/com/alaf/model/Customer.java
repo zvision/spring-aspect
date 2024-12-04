@@ -34,7 +34,7 @@ public @Data class Customer {
 	@Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
 	private String email;
 
-	@Email()
+	@Email(message = "Email should be valid")
 	private String email1;
 
 	@Min(value = 18)	
