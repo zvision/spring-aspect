@@ -1,9 +1,14 @@
 package com.alaf.aspect;
 
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,20 +21,20 @@ import lombok.extern.slf4j.Slf4j;
 public class LoggingAspect {
 
 	
-	/*
-	@Before("execution(* com.alaf.service.*.*(..))")
-	public void logBeforeServiceLayerAdvice(JoinPoint joinPoint) {
+	
+	@Before("execution(* com.alaf.controller.CustomerController.saveCustomer(..))")
+	public void logBeforeControllerAdvice(JoinPoint joinPoint) {
 		log.info("Before running loggingAdvice on method {}", joinPoint.toString()); 
 		System.out.println("Arguments Passed=" + Arrays.toString(joinPoint.getArgs()));
 				
 	}
 	
-	@After("execution(* com.alaf.service.*.*(..))")
-	public void logAfterServiceLayerAdvice(JoinPoint joinPoint) {
+	@After("execution(* com.alaf.controller.CustomerController.saveCustomer(..))")
+	public void logAfterControllerAdvice(JoinPoint joinPoint) {
 		log.info("After running loggingAdvice on method {}", joinPoint.toString()); 
 				
 	}
-	*/
+	
 
 	@Around("execution(* com.alaf.controller.*.*(..))")
 	public Object logAroundAdvice(ProceedingJoinPoint jp) throws Throwable {
